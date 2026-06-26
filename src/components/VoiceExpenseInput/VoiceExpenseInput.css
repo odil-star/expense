@@ -1,0 +1,212 @@
+.voice-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ── Trigger button ── */
+.voice-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 14px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-xs);
+  color: var(--text-2);
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t), border-color var(--t), color var(--t), box-shadow var(--t);
+  flex-shrink: 0;
+}
+
+.voice-btn:hover {
+  background: var(--surface-3);
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.voice-btn--active {
+  background: rgba(239,68,68,.1);
+  border-color: rgba(239,68,68,.4);
+  color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239,68,68,.08);
+}
+
+/* Pulse animation for recording */
+.voice-pulse {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: voice-pulse-anim 1s ease infinite;
+}
+
+@keyframes voice-pulse-anim {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.5); opacity: .5; }
+}
+
+/* ── Live transcript ── */
+.voice-transcript {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  background: rgba(239,68,68,.06);
+  border: 1px solid rgba(239,68,68,.2);
+  border-radius: var(--r-xs);
+  font-size: .82rem;
+  color: var(--text-2);
+  font-style: italic;
+  max-width: 320px;
+  animation: fade-in .2s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.voice-transcript-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex-shrink: 0;
+  animation: voice-pulse-anim .8s ease infinite;
+}
+
+/* ── Preview card ── */
+.voice-preview {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--brand);
+  border-radius: var(--r-sm);
+  box-shadow: 0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(var(--brand-rgb),.15);
+  z-index: 200;
+  animation: preview-drop .22s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+
+@keyframes preview-drop {
+  from { opacity: 0; transform: translateY(-8px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.voice-preview-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--brand-soft);
+  border-bottom: 1px solid rgba(var(--brand-rgb),.15);
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.voice-preview-body {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.voice-preview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.voice-preview-key {
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  flex-shrink: 0;
+}
+
+.voice-preview-val {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  text-align: right;
+}
+
+.voice-preview-amt {
+  font-family: 'Manrope', sans-serif;
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--brand);
+}
+
+.voice-preview-actions {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.voice-confirm-btn {
+  flex: 1;
+  height: 34px;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: var(--r-xs);
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity var(--t);
+}
+
+.voice-confirm-btn:hover { opacity: .88; }
+
+.voice-cancel-btn {
+  height: 34px;
+  padding: 0 12px;
+  background: transparent;
+  color: var(--text-3);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--t), border-color var(--t);
+}
+
+.voice-cancel-btn:hover {
+  color: var(--text);
+  border-color: var(--border-2);
+}
+
+/* ── States ── */
+.voice-unsupported {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-xs);
+  background: var(--surface-2);
+  color: var(--text-3);
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.voice-error-text {
+  font-size: .75rem;
+  color: var(--danger);
+  font-weight: 600;
+}

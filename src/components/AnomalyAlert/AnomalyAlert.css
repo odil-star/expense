@@ -1,0 +1,199 @@
+.anomaly-wrap {
+  animation: anom-in .4s cubic-bezier(.4,0,.2,1) .1s both;
+}
+
+@keyframes anom-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.anomaly-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Single card ── */
+.anomaly-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  background: var(--surface-2);
+  animation: anom-card-in .3s cubic-bezier(.4,0,.2,1) both;
+  transition: box-shadow .2s ease;
+}
+
+@keyframes anom-card-in {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.anomaly-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+}
+
+.anomaly-severity {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 99px;
+  font-size: .7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  align-self: flex-start;
+}
+
+.anomaly-body { flex: 1; }
+
+.anomaly-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.anomaly-cat-icon {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 6px !important;
+  flex-shrink: 0;
+}
+
+.anomaly-title {
+  font-size: .875rem;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+}
+
+.anomaly-date {
+  font-size: .72rem;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+.anomaly-amounts {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.anomaly-amt-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.anomaly-amt-label {
+  font-size: .67rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--text-3);
+}
+
+.anomaly-amt-val {
+  font-family: 'Manrope', sans-serif;
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.anomaly-sep {
+  font-size: .7rem;
+  color: var(--text-3);
+  font-weight: 600;
+}
+
+.anomaly-factor-badge {
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: .75rem;
+  font-weight: 800;
+  font-family: 'Manrope', sans-serif;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Dismiss button */
+.anomaly-dismiss-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-end;
+  height: 30px;
+  padding: 0 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+  color: var(--text-3);
+  font-size: .75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t), color var(--t), border-color var(--t);
+}
+
+.anomaly-dismiss-btn:hover:not(:disabled) {
+  background: rgba(34,197,94,.1);
+  color: #22c55e;
+  border-color: rgba(34,197,94,.3);
+}
+
+.anomaly-dismiss-btn:disabled { opacity: .5; cursor: not-allowed; }
+
+.anomaly-spinner {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border: 2px solid rgba(34,197,94,.3);
+  border-top-color: #22c55e;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Skeletons */
+.anomaly-skel-header {
+  height: 20px;
+  width: 50%;
+  background: var(--surface-3);
+  border-radius: 6px;
+  margin-bottom: 12px;
+  animation: shimmer 1.4s ease infinite;
+}
+
+.anomaly-skel-row {
+  height: 60px;
+  background: var(--surface-3);
+  border-radius: var(--r-sm);
+  margin-bottom: 8px;
+  animation: shimmer 1.4s ease .15s infinite;
+}
+
+@keyframes shimmer {
+  0%,100% { opacity: .5; }
+  50%     { opacity: .25; }
+}
+
+/* All clear state */
+.anomaly-all-clear {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  gap: 8px;
+  text-align: center;
+}
+
+.anomaly-clear-icon { font-size: 2.2rem; }
+.anomaly-clear-title { font-size: .9rem; font-weight: 700; color: var(--text); }
+.anomaly-clear-sub   { font-size: .8rem; color: var(--text-3); }

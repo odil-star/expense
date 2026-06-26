@@ -1,0 +1,47 @@
+.export-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  background: rgba(239,68,68,.1);
+  color: #ef4444;
+  border: 1px solid rgba(239,68,68,.25);
+  border-radius: var(--r-xs);
+  font-size: .78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--t), border-color var(--t), opacity var(--t);
+  white-space: nowrap;
+}
+
+.export-pdf-btn:hover:not(:disabled) {
+  background: rgba(239,68,68,.18);
+  border-color: rgba(239,68,68,.4);
+}
+
+.export-pdf-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.export-pdf-btn--loading {
+  background: rgba(124,58,237,.1);
+  color: var(--brand);
+  border-color: rgba(124,58,237,.25);
+}
+
+.export-pdf-spinner {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(124,58,237,.3);
+  border-top-color: var(--brand);
+  border-radius: 50%;
+  animation: pdf-spin .7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pdf-spin {
+  to { transform: rotate(360deg); }
+}

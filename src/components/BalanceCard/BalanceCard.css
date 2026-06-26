@@ -1,0 +1,34 @@
+/* BalanceCard styles are in src/index.css */
+
+/* override: balance input uses .balance-input class, not .amount-input */
+.balance-card .amount-input-wrap .amount-input {
+  height: 52px;
+  padding: 0 64px 0 40px;
+  background: rgba(0,0,0,.35);
+  border: 1.5px solid rgba(124,58,237,.25);
+  border-radius: var(--r-sm);
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: -.3px;
+}
+.balance-card .amount-input-wrap .amount-input:focus {
+  border-color: rgba(124,58,237,.7);
+  box-shadow: 0 0 0 3px rgba(124,58,237,.18);
+}
+.balance-card .amount-input-wrap .amount-input::placeholder {
+  color: rgba(255,255,255,.18);
+  font-weight: 400;
+  font-size: .95rem;
+}
+.balance-card .amount-input-wrap .amount-input-icon {
+  color: rgba(124,58,237,.6);
+}
+.balance-card .amount-input-wrap .amount-input-suffix {
+  font-size: .7rem;
+  font-weight: 800;
+  color: rgba(124,58,237,.8);
+  background: rgba(124,58,237,.18);
+  padding: 3px 9px;
+  border-radius: 6px;
+}
