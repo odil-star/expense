@@ -2,6 +2,8 @@ import { useCallback } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../context/AuthContext'
 
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://ras-pti3.onrender.com'
+
 export function useApiFetch() {
   const { access, clearTokens } = useAuth()
   const navigate = useNavigate()
@@ -14,7 +16,7 @@ export function useApiFetch() {
       ...options.headers,
     }
     try {
-      const res = await fetch(`/api${path}`, { ...options, headers })
+      const res = await fetch(`${BASE_URL}/api${path}`, { ...options, headers })
       if (res.status === 401) {
         clearTokens()
         navigate('/login', { replace: true })
