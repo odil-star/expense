@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../../context/AuthContext'
 import { safeJson } from '../../utils/safeJson'
+import { BASE_URL } from '../../config'
 import './Auth.css'
 
 export default function Auth() {
@@ -27,7 +28,7 @@ export default function Auth() {
     setLE('')
     if (!loginUser || !loginPass) { setLE('Введите логин и пароль'); return }
     try {
-      const res  = await fetch('/api/login/', {
+      const res  = await fetch(`${BASE_URL}/api/login/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: loginUser, password: loginPass }),
@@ -49,7 +50,7 @@ export default function Auth() {
     if (!regUser || !regPass) { setRegE('Заполните все поля'); return }
     if (regPass !== regPass2)  { setRegE('Пароли не совпадают'); return }
     try {
-      const res  = await fetch('/api/register/', {
+      const res  = await fetch(`${BASE_URL}/api/register/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: regUser, email: regEmail, password: regPass, password2: regPass2 }),

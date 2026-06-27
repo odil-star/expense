@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router'
 import { useAuth } from '../../context/AuthContext'
 import { EXPENSE_CATS } from '../../constants/categories'
+import { BASE_URL } from '../../config'
 import './Sidebar.css'
 
 const NAV_ITEMS = [
@@ -95,7 +96,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/logout/', {
+      await fetch(`${BASE_URL}/api/logout/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
